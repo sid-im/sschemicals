@@ -1,0 +1,644 @@
+
+==========================================
+FILE: src/routes/index.tsx
+==========================================
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Reveal } from "@/components/site/Reveal";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, CheckCircle2, FlaskConical, Phone, Sparkles } from "lucide-react";
+import { useRef } from "react";
+import hero from "@/assets/hero-products.png";
+import factory from "@/assets/manufacturing.png";
+import cleaning from "@/assets/services-cleaning.png";
+import { CtaBand } from "@/components/site/CtaBand";
+import { categories, products, reasons, services } from "@/lib/site-data";
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "SS Chemicals — Complete Cleaning Solutions. Quality You Can Trust." },
+      { name: "description", content: "SS Chemicals manufactures 20+ cleaning & hygiene products and provides professional floor, office and building cleaning services." },
+      { property: "og:title", content: "SS Chemicals — Complete Cleaning Solutions" },
+      { property: "og:description", content: "20+ cleaning products manufactured in-house, plus professional cleaning services." },
+    ],
+  }),
+  component: Index,
+});
+
+const marquee = ["Phenyl", "Floor Cleaner", "Detergent", "Hand Wash", "Dishwash Liquid", "Toilet Cleaner", "Glass Cleaner", "Sanitizer", "Degreaser", "Acid Cleaner"];
+
+function Index() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const imgY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  return (
+    <>
+      <section ref={ref} className="relative overflow-hidden bg-hero pt-32 pb-16 md:pt-40">
+        <div className="container-x grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
+          <div>
+            <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-bold text-primary shadow-soft">
+              <FlaskConical className="h-4 w-4" /> Chemical Manufacturer · Cleaning Services
+            </motion.span>
+            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-6 text-5xl font-extrabold leading-[0.95] md:text-7xl">
+              Complete Cleaning Solutions.{" "}
+              <span className="relative inline-block text-primary">
+                Quality You Can Trust.
+                <motion.span initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.8, duration: 0.8 }} className="absolute -bottom-1 left-0 -z-10 h-4 w-full origin-left rounded-full bg-accent/70" />
+              </span>
+            </motion.h1>
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="mt-6 max-w-xl text-lg text-muted-foreground">
+              We manufacture <strong className="text-foreground">20+ cleaning & hygiene products</strong> — from phenyl and floor cleaners to hand wash and detergents — and deliver professional floor, office and building cleaning services.
+            </motion.p>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }} className="mt-9 flex flex-wrap gap-3">
+              <Link to="/products" className="group inline-flex items-center gap-2 rounded-full bg-deep px-7 py-4 font-bold text-primary-foreground shadow-soft transition hover:-translate-y-1">
+                Explore Products <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              </Link>
+              <Link to="/services" className="inline-flex items-center gap-2 rounded-full bg-lime px-7 py-4 font-bold text-accent-foreground shadow-glow transition hover:-translate-y-1">
+                <Sparkles className="h-4 w-4" /> Our Services
+              </Link>
+              <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-4 font-bold transition hover:-translate-y-1 hover:border-primary">
+                <Phone className="h-4 w-4" /> Contact Us
+              </Link>
+            </motion.div>
+            <div className="mt-12 grid max-w-md grid-cols-3 gap-6">
+              {[["20+", "Products"], ["6", "Categories"], ["100%", "In-house made"]].map(([n, l], i) => (
+                <Reveal key={l} delay={0.6 + i * 0.1}>
+                  <p className="font-display text-3xl font-extrabold text-primary">{n}</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{l}</p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+          <motion.div style={{ y: imgY }} initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }} className="relative">
+            <div className="absolute -inset-6 rounded-[3rem] bg-lime opacity-30 blur-3xl" />
+            <img src={hero} alt="SS Chemicals cleaning product range" width={1280} height={1280} className="relative aspect-square w-full rounded-[2.5rem] object-cover shadow-soft transition-transform duration-700 hover:scale-[1.02]" />
+            <motion.div animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="absolute -left-4 bottom-10 rounded-2xl border border-border bg-card/90 p-4 shadow-soft backdrop-blur md:-left-10">
+              <p className="flex items-center gap-2 text-sm font-bold"><CheckCircle2 className="h-5 w-5 text-primary" /> Quality tested batches</p>
+            </motion.div>
+            <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 5 }} className="absolute -right-2 top-8 rounded-2xl bg-deep p-4 text-primary-foreground shadow-soft md:-right-6">
+              <p className="font-display text-2xl font-extrabold text-accent">99.9%</p>
+              <p className="text-xs text-primary-foreground/70">germ protection</p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      <div className="overflow-hidden border-y border-border bg-primary-deep py-5">
+        <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ repeat: Infinity, duration: 30, ease: "linear" }} className="flex w-max gap-10">
+          {[...marquee, ...marquee].map((m, i) => (
+            <span key={i} className="flex items-center gap-10 font-display text-2xl font-bold text-primary-foreground/90">{m}<Sparkles className="h-5 w-5 text-accent" /></span>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Three pillars */}
+      <section className="container-x py-24">
+        <SectionHeading eyebrow="Who we are" title="One partner for products and cleaning." text="SS Chemicals blends chemical manufacturing expertise with hands-on cleaning services, so every space gets the right formula and the right care." />
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {[
+            { n: "01", t: "Chemical Manufacturer", d: "Our own production facility formulates, mixes and bottles every product we sell." },
+            { n: "02", t: "20+ Hygiene Products", d: "Phenyl, floor cleaners, detergents, hand wash, dishwash and industrial chemicals." },
+            { n: "03", t: "Professional Cleaning", d: "Trained crews for floor, residential, office and commercial building cleaning." },
+          ].map((x, i) => (
+            <Reveal key={x.n} delay={i * 0.1} className="group rounded-3xl border border-border bg-card p-8 transition duration-500 hover:-translate-y-2 hover:bg-deep hover:text-primary-foreground hover:shadow-soft">
+              <p className="font-display text-5xl font-extrabold text-accent transition group-hover:text-accent">{x.n}</p>
+              <h3 className="mt-6 text-2xl font-bold">{x.t}</h3>
+              <p className="mt-3 text-muted-foreground transition group-hover:text-primary-foreground/70">{x.d}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Categories bento */}
+      <section className="bg-secondary/60 py-24">
+        <div className="container-x">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <SectionHeading eyebrow="Our products" title="Six categories. Every surface covered." />
+            <Link to="/products" className="group inline-flex items-center gap-2 font-bold text-primary">View all {products.length} products <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></Link>
+          </div>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {categories.map((c, i) => {
+              const count = products.filter((p) => p.cat === c.id).length;
+              return (
+                <Reveal key={c.id} delay={i * 0.06}>
+                  <Link to="/products" search={{ cat: c.id }} className="group relative flex h-full items-center gap-5 overflow-hidden rounded-3xl border border-border bg-card p-6 transition duration-500 hover:-translate-y-1 hover:shadow-soft">
+                    <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-lime text-accent-foreground transition duration-500 group-hover:rotate-12"><c.icon className="h-7 w-7" /></div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold">{c.name}</h3>
+                      <p className="text-sm text-muted-foreground">{count} products</p>
+                    </div>
+                    <ArrowRight className="h-5 w-5 -translate-x-2 text-primary opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100" />
+                  </Link>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Manufacturing split */}
+      <section className="container-x grid items-center gap-12 py-24 lg:grid-cols-2">
+        <Reveal className="relative">
+          <img src={factory} alt="SS Chemicals manufacturing facility" loading="lazy" width={1600} height={1008} className="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-soft" />
+          <div className="absolute -bottom-6 -right-4 rounded-3xl bg-lime p-6 shadow-glow md:-right-8">
+            <p className="font-display text-4xl font-extrabold text-accent-foreground">In-house</p>
+            <p className="text-sm font-semibold text-accent-foreground/80">formulation & bottling</p>
+          </div>
+        </Reveal>
+        <div>
+          <SectionHeading eyebrow="Manufacturing" title="Made in our own facility, batch by batch." text="From raw material selection to final filling, every bottle goes through controlled mixing and quality checks before it leaves our plant." />
+          <ul className="mt-8 space-y-3">
+            {["Controlled, consistent formulations", "Bulk and retail pack sizes", "Private labelling on request"].map((t, i) => (
+              <Reveal key={t} delay={i * 0.1}><li className="flex items-center gap-3 font-semibold"><CheckCircle2 className="h-5 w-5 text-primary" />{t}</li></Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="relative overflow-hidden bg-primary-deep py-24 text-primary-foreground">
+        <img src={cleaning} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-15" />
+        <div className="container-x relative">
+          <Reveal className="max-w-2xl">
+            <span className="eyebrow text-accent"><span className="h-px w-8 bg-accent" />Our services</span>
+            <h2 className="mt-4 text-4xl font-bold md:text-5xl">Spotless spaces, delivered by professionals.</h2>
+          </Reveal>
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            {services.map((s, i) => (
+              <Reveal key={s.title} delay={i * 0.08} className="group rounded-3xl border border-primary-foreground/15 bg-primary-foreground/5 p-6 backdrop-blur transition duration-500 hover:-translate-y-2 hover:bg-accent hover:text-accent-foreground">
+                <s.icon className="h-8 w-8 text-accent transition group-hover:text-accent-foreground" />
+                <h3 className="mt-6 text-lg font-bold">{s.title}</h3>
+                <p className="mt-2 text-sm opacity-70">{s.desc}</p>
+              </Reveal>
+            ))}
+          </div>
+          <Link to="/services" className="group mt-10 inline-flex items-center gap-2 rounded-full bg-lime px-7 py-4 font-bold text-accent-foreground transition hover:-translate-y-1">
+            Explore services <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+          </Link>
+        </div>
+      </section>
+
+      {/* Why */}
+      <section className="container-x py-24">
+        <SectionHeading center eyebrow="Why SS Chemicals" title="Built on quality. Trusted for results." />
+        <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {reasons.map((r, i) => (
+            <Reveal key={r.title} delay={i * 0.06} className="group bg-card p-8 transition hover:bg-secondary">
+              <div className="grid h-12 w-12 place-items-center rounded-xl bg-secondary text-primary transition group-hover:bg-deep group-hover:text-primary-foreground"><r.icon className="h-6 w-6" /></div>
+              <h3 className="mt-5 text-xl font-bold">{r.title}</h3>
+              <p className="mt-2 text-muted-foreground">{r.desc}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <CtaBand />
+    </>
+  );
+}
+
+==========================================
+FILE: src/routes/__root.tsx
+==========================================
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  Outlet,
+  Link,
+  createRootRouteWithContext,
+  useRouter,
+  HeadContent,
+  Scripts,
+  type ErrorComponentProps,
+} from "@tanstack/react-router";
+import { useEffect, type ReactNode } from "react";
+
+import appCss from "../styles.css?url";
+import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { WhatsAppFab } from "@/components/site/WhatsAppFab";
+
+function NotFoundComponent() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-7xl font-bold text-foreground">404</h1>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <div className="mt-6">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Go home
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
+  console.error(error);
+  const router = useRouter();
+  useEffect(() => {
+    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+  }, [error]);
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+          This page didn't load
+        </h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Something went wrong on our end. You can try refreshing or head back home.
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
+          <button
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Try again
+          </button>
+          <a
+            href="/"
+            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+          >
+            Go home
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "SS Chemicals — Cleaning Products & Services" },
+      { name: "description", content: "Manufacturer of 20+ cleaning and hygiene products and professional cleaning services." },
+      { name: "author", content: "SS Chemicals" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      {
+        rel: "stylesheet",
+        href: appCss,
+      },
+      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Manrope:wght@400..800&display=swap" },
+    ],
+  }),
+  shellComponent: RootShell,
+  component: RootComponent,
+  notFoundComponent: NotFoundComponent,
+  errorComponent: ErrorComponent,
+});
+
+function RootShell({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+function RootComponent() {
+  const { queryClient } = Route.useRouteContext();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+      <Header />
+      <main><Outlet /></main>
+      <Footer />
+      <WhatsAppFab />
+    </QueryClientProvider>
+  );
+}
+
+==========================================
+FILE: src/components/site/PageHero.tsx
+==========================================
+import { motion } from "framer-motion";
+export function PageHero({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
+  return (
+    <section className="relative overflow-hidden bg-hero pt-36 pb-20">
+      <div className="absolute -right-32 top-10 h-96 w-96 rounded-full bg-accent/30 blur-3xl" />
+      <div className="container-x relative">
+        <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="eyebrow"><span className="h-px w-8 bg-primary" />{eyebrow}</motion.span>
+        <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }} className="mt-4 max-w-4xl text-5xl font-extrabold leading-[0.95] md:text-7xl">{title}</motion.h1>
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }} className="mt-6 max-w-2xl text-lg text-muted-foreground">{text}</motion.p>
+      </div>
+    </section>
+  );
+}
+
+==========================================
+FILE: src/components/site/ProductCard.tsx
+==========================================
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { categories, products, waLink } from "@/lib/site-data";
+
+export function ProductCard({ p, i }: { p: (typeof products)[number]; i: number }) {
+  const cat = categories.find((c) => c.id === p.cat)!;
+  const Icon = cat.icon;
+  return (
+    <motion.article layout initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.4, delay: Math.min(i * 0.03, 0.3) }}
+      className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 transition duration-500 hover:-translate-y-2 hover:shadow-soft">
+      <div className="relative mb-6 grid h-40 place-items-center overflow-hidden rounded-2xl bg-hero">
+        <div className="absolute -bottom-10 -right-10 h-32 w-32 rounded-full bg-accent/40 blur-2xl transition duration-700 group-hover:scale-150" />
+        <div className="relative grid h-20 w-20 place-items-center rounded-2xl bg-deep text-primary-foreground shadow-soft transition duration-500 group-hover:rotate-6 group-hover:scale-110">
+          <Icon className="h-9 w-9" />
+        </div>
+        <span className="absolute left-3 top-3 rounded-full bg-card/80 px-3 py-1 text-[11px] font-bold text-primary backdrop-blur">{cat.name}</span>
+      </div>
+      <h3 className="text-xl font-bold">{p.name}</h3>
+      <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.desc}</p>
+      <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-primary/70">{p.size}</p>
+      <a href={waLink(`Hello SS Chemicals, I'd like to enquire about ${p.name}.`)} target="_blank" rel="noreferrer"
+        className="mt-5 inline-flex items-center justify-between rounded-full bg-secondary px-5 py-3 text-sm font-bold text-secondary-foreground transition group-hover:bg-deep group-hover:text-primary-foreground">
+        Enquire Now <ArrowUpRight className="h-4 w-4 transition group-hover:rotate-45" />
+      </a>
+    </motion.article>
+  );
+}
+
+==========================================
+FILE: src/components/site/Reveal.tsx
+==========================================
+import { motion, type HTMLMotionProps } from "framer-motion";
+
+export function Reveal({ delay = 0, y = 28, ...props }: HTMLMotionProps<"div"> & { delay?: number; y?: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      {...props}
+    />
+  );
+}
+
+export function SectionHeading({ eyebrow, title, text, center }: { eyebrow: string; title: string; text?: string; center?: boolean }) {
+  return (
+    <Reveal className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
+      <span className="eyebrow"><span className="h-px w-8 bg-primary" />{eyebrow}</span>
+      <h2 className="mt-4 text-4xl font-bold leading-[1.05] md:text-5xl">{title}</h2>
+      {text && <p className="mt-4 text-lg text-muted-foreground">{text}</p>}
+    </Reveal>
+  );
+}
+
+==========================================
+FILE: src/lib/site-data.ts
+==========================================
+import { Droplets, Sparkles, Hand, UtensilsCrossed, Shirt, Factory, Building2, Home, Briefcase, Brush, ShieldCheck, Layers, BadgeIndianRupee, HeartHandshake, Award, Users } from "lucide-react";
+
+// Placeholder contact details — replace with real values.
+export const contact = {
+  company: "SS Chemicals",
+  person: "Your Name",
+  phone: "+91 90000 00000",
+  phoneRaw: "919000000000",
+  whatsapp: "919000000000",
+  email: "info@sschemicals.in",
+  address: "Industrial Area, Your City, India",
+  mapQuery: "Industrial Area India",
+};
+
+export const waLink = (msg = "Hello SS Chemicals, I would like to enquire about your products/services.") =>
+  `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(msg)}`;
+
+export const categories = [
+  { id: "floor", name: "Phenyl & Floor Care", icon: Droplets },
+  { id: "laundry", name: "Detergents & Laundry", icon: Shirt },
+  { id: "hand", name: "Hand & Personal Hygiene", icon: Hand },
+  { id: "kitchen", name: "Kitchen & Dishwash", icon: UtensilsCrossed },
+  { id: "surface", name: "Surface & Bathroom", icon: Sparkles },
+  { id: "industrial", name: "Industrial & Commercial", icon: Factory },
+] as const;
+
+export type CategoryId = (typeof categories)[number]["id"];
+
+export const products: { name: string; cat: CategoryId; desc: string; size: string }[] = [
+  { name: "Black Phenyl", cat: "floor", desc: "Powerful disinfectant for drains, floors and outdoor areas.", size: "1L · 5L · 20L" },
+  { name: "White Phenyl", cat: "floor", desc: "Germ-killing emulsion with a fresh pine finish.", size: "1L · 5L · 20L" },
+  { name: "Floor Cleaner – Lavender", cat: "floor", desc: "Concentrated, streak-free cleaner with long-lasting fragrance.", size: "500ml · 1L · 5L" },
+  { name: "Floor Cleaner – Lemon", cat: "floor", desc: "Citrus-fresh formula that cuts grease and grime.", size: "500ml · 1L · 5L" },
+  { name: "Marble & Tile Polish", cat: "floor", desc: "Restores shine to marble, granite and vitrified tiles.", size: "1L · 5L" },
+  { name: "Liquid Detergent", cat: "laundry", desc: "Gentle on fabric, tough on stains. Machine & hand wash.", size: "1L · 5L" },
+  { name: "Detergent Powder", cat: "laundry", desc: "High-foam everyday washing powder for bright clothes.", size: "500g · 1kg · 5kg" },
+  { name: "Fabric Conditioner", cat: "laundry", desc: "Softens fabrics and leaves a lasting fresh scent.", size: "1L · 5L" },
+  { name: "Hand Wash – Aloe", cat: "hand", desc: "Mild, moisturising hand wash enriched with aloe vera.", size: "250ml · 5L" },
+  { name: "Hand Wash – Neem", cat: "hand", desc: "Antibacterial neem formula for everyday protection.", size: "250ml · 5L" },
+  { name: "Hand Sanitizer", cat: "hand", desc: "Alcohol-based quick-dry sanitizer, 70% IPA.", size: "100ml · 500ml · 5L" },
+  { name: "Dishwash Liquid", cat: "kitchen", desc: "Lime-powered liquid that removes grease in seconds.", size: "500ml · 1L · 5L" },
+  { name: "Dishwash Gel", cat: "kitchen", desc: "Thick concentrated gel, a few drops for a full sink.", size: "250ml · 1L" },
+  { name: "Kitchen Degreaser", cat: "kitchen", desc: "Cuts baked-on oil from chimneys, stoves and tiles.", size: "500ml · 5L" },
+  { name: "Toilet Cleaner", cat: "surface", desc: "Thick liquid that kills 99.9% germs and removes stains.", size: "500ml · 1L · 5L" },
+  { name: "Bathroom Cleaner", cat: "surface", desc: "Removes hard-water marks and soap scum effortlessly.", size: "500ml · 5L" },
+  { name: "Glass Cleaner", cat: "surface", desc: "Streak-free shine for glass, mirrors and screens.", size: "500ml · 5L" },
+  { name: "Multi-Surface Cleaner", cat: "surface", desc: "One spray for tables, counters and workstations.", size: "500ml · 5L" },
+  { name: "Acid Cleaner", cat: "industrial", desc: "Heavy-duty descaler for tough industrial deposits.", size: "5L · 20L · 50L" },
+  { name: "Air Freshener", cat: "industrial", desc: "Long-lasting room fresheners for offices and lobbies.", size: "250ml · 5L" },
+  { name: "Floor Scrubber Chemical", cat: "industrial", desc: "Low-foam concentrate for auto scrubbing machines.", size: "5L · 20L · 50L" },
+  { name: "Car Wash Shampoo", cat: "industrial", desc: "pH-balanced foam shampoo safe for paint and glass.", size: "1L · 5L · 20L" },
+];
+
+export const services = [
+  { title: "Floor Cleaning", icon: Brush, desc: "Deep scrubbing, polishing and restoration for marble, granite, tile and industrial floors." },
+  { title: "Residential Cleaning", icon: Home, desc: "Complete home cleaning — kitchens, bathrooms, living spaces and move-in / move-out." },
+  { title: "Commercial Building Cleaning", icon: Building2, desc: "Lobbies, corridors, facades and common areas kept spotless for tenants and visitors." },
+  { title: "Office Cleaning", icon: Briefcase, desc: "Daily, weekly or one-time housekeeping for workstations, cabins and washrooms." },
+  { title: "Maintenance Solutions", icon: Layers, desc: "Annual maintenance contracts with trained staff, our own chemicals and equipment." },
+];
+
+export const reasons = [
+  { title: "20+ Products", icon: Layers, desc: "A complete range for every surface and every space." },
+  { title: "Quality Manufacturing", icon: Award, desc: "Tested formulations made in our own facility." },
+  { title: "Reliable Services", icon: ShieldCheck, desc: "Trained crews who show up on time, every time." },
+  { title: "Professional Approach", icon: Users, desc: "Clear scopes, uniformed staff and accountable supervision." },
+  { title: "Competitive Pricing", icon: BadgeIndianRupee, desc: "Factory-direct prices for retail and bulk orders." },
+  { title: "Customer Satisfaction", icon: HeartHandshake, desc: "Long-term relationships built on consistent results." },
+];
+
+==========================================
+FILE: package.json
+==========================================
+{
+  "name": "my-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-alert-dialog": "^1.1.15",
+    "@radix-ui/react-aspect-ratio": "^1.1.8",
+    "@radix-ui/react-avatar": "^1.1.11",
+    "@radix-ui/react-checkbox": "^1.3.3",
+    "@radix-ui/react-collapsible": "^1.1.12",
+    "@radix-ui/react-context-menu": "^2.2.16",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-hover-card": "^1.1.15",
+    "@radix-ui/react-label": "^2.1.8",
+    "@radix-ui/react-menubar": "^1.1.16",
+    "@radix-ui/react-navigation-menu": "^1.2.14",
+    "@radix-ui/react-popover": "^1.1.15",
+    "@radix-ui/react-progress": "^1.1.8",
+    "@radix-ui/react-radio-group": "^1.3.8",
+    "@radix-ui/react-scroll-area": "^1.2.10",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-separator": "^1.1.8",
+    "@radix-ui/react-slider": "^1.3.6",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@radix-ui/react-switch": "^1.2.6",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@radix-ui/react-toggle": "^1.1.10",
+    "@radix-ui/react-toggle-group": "^1.1.11",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "@tailwindcss/vite": "^4.2.1",
+    "@tanstack/react-query": "^5.101.1",
+    "@tanstack/react-router": "1.170.41",
+    "@tanstack/react-start": "1.168.60",
+    "@tanstack/router-plugin": "1.168.42",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "date-fns": "^4.1.0",
+    "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^14.9.1",
+    "input-otp": "^1.4.2",
+    "lucide-react": "^1.68.0",
+    "react": "^19.2.0",
+    "react-day-picker": "^9.14.0",
+    "react-dom": "^19.2.0",
+    "react-hook-form": "^7.71.2",
+    "react-resizable-panels": "^4.6.5",
+    "recharts": "^2.15.4",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.2.1",
+    "tw-animate-css": "^1.3.4",
+    "vaul": "^1.1.2",
+    "vite-tsconfig-paths": "^6.0.2",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@lovable.dev/vite-tanstack-config": "2.26.5",
+    "@testing-library/jest-dom": "^6.6.0",
+    "@testing-library/react": "^16.0.0",
+    "@types/node": "^22.16.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^15.15.0",
+    "jsdom": "^20.0.3",
+    "nitro": "3.0.260603-beta",
+    "prettier": "^3.7.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.56.1",
+    "vite": "8.1.5",
+    "vitest": "^4.1.10"
+  }
+}
+
+==========================================
+FILE: components.json
+==========================================
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "css": "src/styles.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "rtl": false,
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "registries": {}
+}
+==========================================
+FILE: tsconfig.json
+==========================================
+{
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "eslint.config.js"
+  ],
+  "compilerOptions": {
+    "target": "ES2022",
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client", "vitest/globals"],
+
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": false,
+    "noEmit": true,
+
+    "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}

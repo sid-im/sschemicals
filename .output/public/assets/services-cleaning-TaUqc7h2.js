@@ -1,0 +1,1 @@
+var e=`/assets/services-cleaning-inX2Diro.png`;export{e as t};
