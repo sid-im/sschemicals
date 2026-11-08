@@ -1,11 +1,11 @@
 import { A as Briefcase, C as Droplets, M as Award, O as BuildingComplex, _ as HeartHandshake, c as ShieldCheck, g as House, h as Layers, j as BadgeIndianRupee, k as Brush, n as UtensilsCrossed, o as Sparkles, r as Users, s as Shirt, v as Hand, x as Factory } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/site-data-BQzWzEPa.js
+//#region node_modules/.nitro/vite/services/ssr/assets/site-data-zk3KOPiU.js
 var contact = {
 	company: "SS Chemicals",
-	person: "Mr. Appu Hosur",
+	person: "Appu Hosur",
 	phone: "+91 8660100885",
-	phoneRaw: "918660100885",
-	whatsapp: "918660100885",
+	phoneRaw: "8660100885",
+	whatsapp: "8660100885",
 	email: "info@sschemicals.in",
 	address: "Industrial Area, Your City, India",
 	mapQuery: "Industrial Area India"

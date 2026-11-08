@@ -2,11 +2,11 @@ import { i as AnimatePresence, r as motion } from "../_libs/framer-motion+[...].
 import { r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { t as PageHero } from "./PageHero-COgXp-0X.mjs";
 import { P as ArrowUpRight } from "../_libs/lucide-react.mjs";
-import { o as waLink, r as products, t as categories } from "./site-data-BQzWzEPa.mjs";
+import { o as waLink, r as products, t as categories } from "./site-data-zk3KOPiU.mjs";
 import { b as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { t as CtaBand } from "./CtaBand-DSTnNyhg.mjs";
-import { t as Route } from "./products--_gAvPDg.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/products-CVIe4wd2.js
+import { t as CtaBand } from "./CtaBand-BcZhmwmc.mjs";
+import { t as Route } from "./products-RpHG1TiG.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/products-CuC5RbwH.js
 var import_jsx_runtime = require_jsx_runtime();
 function ProductCard({ p, i }) {
 	const cat = categories.find((c) => c.id === p.cat);

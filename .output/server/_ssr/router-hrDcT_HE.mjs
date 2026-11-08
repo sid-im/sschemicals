@@ -2,14 +2,14 @@ import { n as __toESM } from "../_runtime.mjs";
 import { i as AnimatePresence, r as motion } from "../_libs/framer-motion+[...].mjs";
 import { n as require_react, r as require_jsx_runtime, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
 import { D as Camera, E as ChevronDown, N as AtSign, d as MessageCircle, f as Menu, m as Mail, p as MapPin, t as X, u as Phone, w as CirclePlay, y as Globe } from "../_libs/lucide-react.mjs";
-import { a as services, n as contact, o as waLink, t as categories } from "./site-data-BQzWzEPa.mjs";
+import { a as services, n as contact, o as waLink, t as categories } from "./site-data-zk3KOPiU.mjs";
 import { _ as createFileRoute, d as Scripts, f as HeadContent, g as lazyRouteComponent, h as Outlet, m as createRouter, v as createRootRouteWithContext, x as useRouter, y as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { t as Route$5 } from "./products--_gAvPDg.mjs";
+import { t as Route$5 } from "./products-RpHG1TiG.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-49fxvSoW.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-hrDcT_HE.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-DU5cu23i.css";
+var styles_default = "/assets/styles-BbOcmiQz.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
@@ -470,7 +470,7 @@ function RootComponent() {
 		]
 	});
 }
-var $$splitComponentImporter$3 = () => import("./routes-S_huqMrV.mjs");
+var $$splitComponentImporter$3 = () => import("./routes-6b0NNJ29.mjs");
 var Route$3 = createFileRoute("/")({
 	head: () => ({ meta: [
 		{ title: "SS Chemicals — Complete Cleaning Solutions. Quality You Can Trust." },
@@ -489,7 +489,7 @@ var Route$3 = createFileRoute("/")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-var $$splitComponentImporter$2 = () => import("./about-srMDvVgr.mjs");
+var $$splitComponentImporter$2 = () => import("./about-YRDl9Cd-.mjs");
 var Route$2 = createFileRoute("/about")({
 	head: () => ({ meta: [
 		{ title: "About SS Chemicals — Manufacturer & Cleaning Experts" },
@@ -508,7 +508,7 @@ var Route$2 = createFileRoute("/about")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter$1 = () => import("./contact-D6U5hfLm.mjs");
+var $$splitComponentImporter$1 = () => import("./contact-DtvcBJKm.mjs");
 var Route$1 = createFileRoute("/contact")({
 	head: () => ({ meta: [
 		{ title: "Contact SS Chemicals — Enquiries & Quotes" },
@@ -527,7 +527,7 @@ var Route$1 = createFileRoute("/contact")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-var $$splitComponentImporter = () => import("./services-q_95O_SH.mjs");
+var $$splitComponentImporter = () => import("./services-BvVQwTYv.mjs");
 var Route = createFileRoute("/services")({
 	head: () => ({ meta: [
 		{ title: "Cleaning Services — Floor, Office & Building | SS Chemicals" },

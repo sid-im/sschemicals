@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-CnQ1RvXG.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DHa3jwo5.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/Users/siddarth/Desktop/React/my-app/src/routes/__root.tsx",
@@ -9,22 +9,22 @@ var tsrStartManifest = () => ({ routes: {
 			"/products",
 			"/services"
 		],
-		preloads: ["/assets/index-oV0X6lBz.js"],
+		preloads: ["/assets/index-CclKpyYR.js"],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-oV0X6lBz.js"
+			src: "/assets/index-CclKpyYR.js"
 		} }]
 	},
 	"/": {
 		filePath: "/Users/siddarth/Desktop/React/my-app/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-De5dCbsV.js",
-			"/assets/CtaBand-tNmV41Os.js",
-			"/assets/circle-check-DN_948wF.js",
+			"/assets/routes-Fr0QYqvF.js",
+			"/assets/CtaBand-CHNtGoI-.js",
+			"/assets/circle-check-Cy9Rhupf.js",
 			"/assets/manufacturing-CyHiOvL-.js",
-			"/assets/Reveal-CenV1cxR.js",
+			"/assets/Reveal-DB65bcey.js",
 			"/assets/services-cleaning-TaUqc7h2.js"
 		]
 	},
@@ -32,41 +32,41 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/Users/siddarth/Desktop/React/my-app/src/routes/about.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/about-B80zulll.js",
-			"/assets/CtaBand-tNmV41Os.js",
-			"/assets/circle-check-DN_948wF.js",
+			"/assets/about-Ctbed6Ad.js",
+			"/assets/CtaBand-CHNtGoI-.js",
+			"/assets/circle-check-Cy9Rhupf.js",
 			"/assets/manufacturing-CyHiOvL-.js",
-			"/assets/PageHero-Ig51AwZh.js",
-			"/assets/Reveal-CenV1cxR.js"
+			"/assets/PageHero-D6T75KgH.js",
+			"/assets/Reveal-DB65bcey.js"
 		]
 	},
 	"/contact": {
 		filePath: "/Users/siddarth/Desktop/React/my-app/src/routes/contact.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/contact-Dyjmvt3F.js",
-			"/assets/PageHero-Ig51AwZh.js",
-			"/assets/Reveal-CenV1cxR.js"
+			"/assets/contact-lakHVS-X.js",
+			"/assets/PageHero-D6T75KgH.js",
+			"/assets/Reveal-DB65bcey.js"
 		]
 	},
 	"/products": {
 		filePath: "/Users/siddarth/Desktop/React/my-app/src/routes/products.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/products-DI1lEX5n.js",
-			"/assets/CtaBand-tNmV41Os.js",
-			"/assets/PageHero-Ig51AwZh.js"
+			"/assets/products-Bf3ie66d.js",
+			"/assets/CtaBand-CHNtGoI-.js",
+			"/assets/PageHero-D6T75KgH.js"
 		]
 	},
 	"/services": {
 		filePath: "/Users/siddarth/Desktop/React/my-app/src/routes/services.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/services-CUoqMZH1.js",
-			"/assets/CtaBand-tNmV41Os.js",
-			"/assets/circle-check-DN_948wF.js",
-			"/assets/PageHero-Ig51AwZh.js",
-			"/assets/Reveal-CenV1cxR.js",
+			"/assets/services-DYgKWsPp.js",
+			"/assets/CtaBand-CHNtGoI-.js",
+			"/assets/circle-check-Cy9Rhupf.js",
+			"/assets/PageHero-D6T75KgH.js",
+			"/assets/Reveal-DB65bcey.js",
 			"/assets/services-cleaning-TaUqc7h2.js"
 		]
 	}

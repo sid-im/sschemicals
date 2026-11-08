@@ -4,14 +4,14 @@ import { t as manufacturing_default } from "./manufacturing-Cp1nwDod.mjs";
 import { n as require_react, r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { n as SectionHeading, t as Reveal } from "./Reveal-BYnHreeb.mjs";
 import { F as ArrowRight, T as CircleCheck, b as FlaskConical, o as Sparkles, u as Phone } from "../_libs/lucide-react.mjs";
-import { a as services, i as reasons, r as products, t as categories } from "./site-data-BQzWzEPa.mjs";
+import { a as services, i as reasons, r as products, t as categories } from "./site-data-zk3KOPiU.mjs";
 import { y as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { t as CtaBand } from "./CtaBand-DSTnNyhg.mjs";
+import { t as CtaBand } from "./CtaBand-BcZhmwmc.mjs";
 import { t as services_cleaning_default } from "./services-cleaning-DscTYmmt.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-S_huqMrV.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-6b0NNJ29.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var hero_products_default = "/assets/hero-products-CTMQCFVB.png";
+var hero_products_default = "/assets/hero-products-DnOOz7s2.png";
 var marquee = [
 	"Phenyl",
 	"Floor Cleaner",
@@ -174,7 +174,7 @@ function Index() {
 							alt: "SS Chemicals cleaning product range",
 							width: 1280,
 							height: 1280,
-							className: "relative aspect-square w-full rounded-[2.5rem] object-cover shadow-soft"
+							className: "relative aspect-square w-full rounded-[2.5rem] object-cover shadow-soft transition-transform duration-700 hover:scale-[1.02]"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(motion.div, {
 							animate: { y: [

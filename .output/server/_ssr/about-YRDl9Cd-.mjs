@@ -3,8 +3,8 @@ import { r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.m
 import { t as PageHero } from "./PageHero-COgXp-0X.mjs";
 import { n as SectionHeading, t as Reveal } from "./Reveal-BYnHreeb.mjs";
 import { S as Eye, T as CircleCheck, a as Target } from "../_libs/lucide-react.mjs";
-import { t as CtaBand } from "./CtaBand-DSTnNyhg.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/about-srMDvVgr.js
+import { t as CtaBand } from "./CtaBand-BcZhmwmc.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/about-YRDl9Cd-.js
 var import_jsx_runtime = require_jsx_runtime();
 function About() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [

@@ -1,7 +1,7 @@
-import { t as categories } from "./site-data-BQzWzEPa.mjs";
+import { t as categories } from "./site-data-zk3KOPiU.mjs";
 import { _ as createFileRoute, g as lazyRouteComponent } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/products--_gAvPDg.js
-var $$splitComponentImporter = () => import("./products-CVIe4wd2.mjs");
+//#region node_modules/.nitro/vite/services/ssr/assets/products-RpHG1TiG.js
+var $$splitComponentImporter = () => import("./products-CuC5RbwH.mjs");
 var ids = categories.map((c) => c.id);
 var Route = createFileRoute("/products")({
 	validateSearch: (s) => typeof s["cat"] === "string" && ids.includes(s["cat"]) ? { cat: s["cat"] } : {},
